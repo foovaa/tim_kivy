@@ -1,0 +1,46 @@
+#:kivy 1.11.1
+
+<WindowManager>:
+    FirstWindow:
+    SecondWindow:
+
+<FirstWindow>:    
+    name: 'window1'
+
+    GridLayout:
+        cols: 1
+
+
+        GridLayout:
+            background_color: 1, 0, 0, 1
+            cols: 2
+
+            Label:
+                text: 'Password:'
+
+            TextInput:
+                id: password
+                multiline: False
+
+        Button:
+            text: 'Submit'
+            on_release: 
+                app.root.current = 'window2'
+                app.root.transition.direction = 'left'
+
+
+<SecondWindow>:
+    name: 'window2'
+
+    GridLayout:
+        rows: 2
+        Label:
+            text: 'This is Window 2'
+
+        Button:
+            text: 'Back'
+            on_release:
+                app.root.current = 'window1'
+                app.root.transition.direction = 'right'
+
+

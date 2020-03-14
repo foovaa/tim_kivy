@@ -1,0 +1,39 @@
+#:kivy 1.11.1
+
+<MyWidget>:
+
+    firstName: firstNameTextInput
+    lastName: lastNameTextInput
+    email: emailTextInput 
+
+
+    GridLayout:
+        cols: 1
+        size: root.width - 200, root.height - 200 
+        pos: 100, 100
+        background_color: 123, 123, 123, 1
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: 'Name:'
+            TextInput:
+                id: firstNameTextInput
+                multiline: False
+
+            Label:
+                text: 'Last Name:'
+            TextInput:
+                id: lastNameTextInput
+                multiline: False
+
+            Label:
+                text: 'Email:'
+            TextInput:
+                id: emailTextInput
+                multiline: False
+
+        Button:
+            text: 'Submit'
+            on_press: root.submitButton()
