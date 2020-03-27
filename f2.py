@@ -6,6 +6,18 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.utils import escape_markup
+
+
+
+import arabic_reshaper as ar
+from bidi.algorithm import get_display
+
+
+
+def display_persian(text):
+    bidi_text = get_display(ar.reshape(text))
+    return '[font=B-NAZANIN.TTF][b]' + escape_markup(bidi_text) + '[/b][/font]'
 
 class MyGridLayout(GridLayout):
     def __init__(self, **kwargs):
@@ -15,7 +27,7 @@ class MyGridLayout(GridLayout):
         self.insideGridLayout = GridLayout()
         self.insideGridLayout.cols = 2
 
-        self.firstNameLabel = Label(text='text 1')
+        self.firstNameLabel = Label(text=display_persian('فقط سلام'), markup=True)
         self.insideGridLayout.add_widget(self.firstNameLabel)
         self.nameTextInput = TextInput(multiline=False)
         self.insideGridLayout.add_widget(self.nameTextInput)
